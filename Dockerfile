@@ -28,8 +28,8 @@ RUN set -ex \
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.5.0
 
-RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
-  apt-get install -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_6.x | -E bash -
+RUN apt-get install -y nodejs
 
 # Chrome install to run phantomjs tests
 RUN \
