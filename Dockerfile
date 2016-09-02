@@ -64,8 +64,8 @@ RUN chown -R seleuser /home/seleuser
 RUN chgrp -R seleuser /home/seleuser
 
 RUN npm install -g \
-  selenium-standalone@5.0.0 \
-  phantomjs-prebuilt@2.1.4 && \
+  selenium-standalone \
+  phantomjs-prebuilt && \
   selenium-standalone install
 
 EXPOSE 4444 5999
