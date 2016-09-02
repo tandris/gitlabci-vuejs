@@ -31,7 +31,7 @@ ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.5.0
 
 RUN apt-get update
-RUN apt-get install -y xz-utils default-jre
+RUN apt-get install -y xz-utils
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -49,12 +49,26 @@ RUN \
   apt-get install -y google-chrome-stable && \
   rm -rf /var/lib/apt/lists/*
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y xvfb
+RUN apt-get update -y
+RUN apt-get install -y -q \
+  openjdk-7-jre-headless \
+  x11vnc \
+  xvfb \
+  xfonts-100dpi \
+  xfonts-75dpi \
+  xfonts-scalable \
+  xfonts-cyrillic
+RUN useradd -d /home/seleuser -m seleuser
+RUN mkdir -p /home/seleuser/chrome
+RUN chown -R seleuser /home/seleuser
+RUN chgrp -R seleuser /home/seleuser
 
-COPY xvfb /etc/init.d/
-RUN chmod +x /etc/init.d/xvfb
+RUN npm install -g \
+  selenium-standalone@5.0.0 \
+  phantomjs-prebuilt@2.1.4 && \
+  selenium-standalone install
+
+EXPOSE 4444 5999
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
