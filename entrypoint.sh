@@ -13,4 +13,4 @@ gitlab-runner run
 
 
 # selenium must be started by a non-root user otherwise chrome can't start
-# su - seleuser -c "selenium-standalone start"
+su - seleuser -c "xvfb-run --server-args=\"-screen 0, 1366x768x24\" selenium-standalone start"
