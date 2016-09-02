@@ -1,6 +1,6 @@
 FROM gitlab/gitlab-runner:latest
 
-MAINTAINER Gabor Rendes <rendesg@gmail.com>
+MAINTAINER tandris
 
 ENV GITLAB_CI_URL=yourgitlabci.com
 ENV GITLAB_CI_TOKEN=runners
@@ -31,6 +31,7 @@ ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.5.0
 
 RUN apt-get update
+RUN apt-get install -y xz-utils
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
