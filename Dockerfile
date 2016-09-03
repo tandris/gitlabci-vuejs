@@ -31,7 +31,7 @@ ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 6.5.0
 
 RUN apt-get update
-RUN apt-get install -y xz-utils
+RUN apt-get install -y xz-utils mc
 
 RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
@@ -53,6 +53,9 @@ RUN apt-get update -y
 RUN apt-get install -y -q \
   openjdk-7-jre-headless \
   xvfb
+
+RUN npm install -g nightwatch
+
 
 EXPOSE 4444 5999
 
