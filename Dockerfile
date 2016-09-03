@@ -54,8 +54,11 @@ RUN apt-get install -y -q \
   openjdk-7-jre-headless \
   xvfb
 
-RUN npm install -g nightwatch
-
+RUN npm install -g \
+  nightwatch \
+  selenium-standalone \
+  phantomjs-prebuilt && \
+  selenium-standalone install
 
 EXPOSE 4444 5999
 
