@@ -52,21 +52,7 @@ RUN \
 RUN apt-get update -y
 RUN apt-get install -y -q \
   openjdk-7-jre-headless \
-  x11vnc \
-  xvfb \
-  xfonts-100dpi \
-  xfonts-75dpi \
-  xfonts-scalable \
-  xfonts-cyrillic
-RUN useradd -d /home/seleuser -m seleuser
-RUN mkdir -p /home/seleuser/chrome
-RUN chown -R seleuser /home/seleuser
-RUN chgrp -R seleuser /home/seleuser
-
-RUN npm install -g \
-  selenium-standalone \
-  phantomjs-prebuilt && \
-  selenium-standalone install
+  xvfb
 
 EXPOSE 4444 5999
 
