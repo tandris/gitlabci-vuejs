@@ -56,6 +56,8 @@ RUN apt-get install -y -q \
 
 RUN npm install -g \
   nightwatch \
+  typeings \
+  typescript \
   selenium-standalone \
   phantomjs-prebuilt && \
   selenium-standalone install
