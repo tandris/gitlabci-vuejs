@@ -76,7 +76,6 @@ RUN \
 
 RUN apt-get update -y
 RUN apt-get install -y -q \
-  openjdk-7-jre-headless \
   xvfb
 
 RUN npm install -g \
