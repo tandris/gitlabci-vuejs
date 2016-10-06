@@ -74,6 +74,9 @@ RUN \
   apt-get install -y google-chrome-stable && \
   rm -rf /var/lib/apt/lists/*
 
+# Firefox install
+RUN apt-get -y install --install-recommends firefox=49.0*
+
 RUN apt-get update -y
 RUN apt-get install -y -q \
   xvfb
