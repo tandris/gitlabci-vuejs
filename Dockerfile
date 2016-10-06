@@ -75,7 +75,9 @@ RUN \
   rm -rf /var/lib/apt/lists/*
 
 # Firefox install
-RUN apt-get -y install --install-recommends firefox=49.0*
+RUN \
+  wget https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_44.0.2-0ubuntu1_amd64.deb && \
+  dpkg -i firefox-mozilla-build_44.0.2-0ubuntu1_amd64.deb
 
 RUN apt-get update -y
 RUN apt-get install -y -q \
