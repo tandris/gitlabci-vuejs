@@ -53,7 +53,7 @@ RUN set -ex \
   done
 
 ENV NPM_CONFIG_LOGLEVEL info
-ENV NODE_VERSION 6.5.0
+ENV NODE_VERSION 6.10.1
 
 RUN apt-get update
 RUN apt-get install -y xz-utils mc
@@ -76,20 +76,12 @@ RUN \
 
 # Firefox install
 RUN \
-  wget https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_44.0.2-0ubuntu1_amd64.deb && \
-  dpkg -i firefox-mozilla-build_44.0.2-0ubuntu1_amd64.deb
+  wget https://sourceforge.net/projects/ubuntuzilla/files/mozilla/apt/pool/main/f/firefox-mozilla-build/firefox-mozilla-build_52.0.1-0ubuntu1_amd64.deb && \
+  dpkg -i firefox-mozilla-build_52.0.1-0ubuntu1_amd64.deb
 
 RUN apt-get update -y
 RUN apt-get install -y -q \
   xvfb
-
-RUN npm install -g \
-  nightwatch \
-  typings \
-  typescript \
-  selenium-standalone \
-  phantomjs-prebuilt && \
-  selenium-standalone install
 
 EXPOSE 4444 5999
 
